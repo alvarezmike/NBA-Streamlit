@@ -3,9 +3,7 @@ import streamlit as st
 import pandas as pd
 import base64
 from streamlit_lottie import st_lottie
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
+
 
 # For more emojis code https://www.webfx.com/tools/emoji-cheat-sheet/
 st.set_page_config(page_title="NBA Stats", page_icon=":basketball:")
@@ -72,26 +70,6 @@ def filedownload(df):
 
 
 st.markdown(filedownload(df_selected_team), unsafe_allow_html=True)
-
-# Heatmap
-# if st.button('Intercorrelation Heatmap'):
-#     st.header('Intercorrelation Matrix Heatmap')
-#     df_selected_team.to_csv('output.csv',index=False)
-#     df = pd.read_csv('output.csv')
-#
-#     corr = df.corr()
-#     mask = np.zeros_like(corr)
-#     mask[np.triu_indices_from(mask)] = True
-#     with sns.axes_style("white"):
-#         f, ax = plt.subplots(figsize=(7, 5))
-#         ax = sns.heatmap(corr, mask=mask, vmax=1, square=True)
-#     st.pyplot()
-
-# Barchart
-# if st.button('Barchart'):
-#     st.header('Age Visualization')
-#     st.bar_chart(df_selected_team.Age)
-
 
 
 
