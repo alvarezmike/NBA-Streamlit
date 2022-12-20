@@ -4,6 +4,9 @@ import streamlit as st
 import pandas as pd
 import base64
 
+# For more emojis code https://www.webfx.com/tools/emoji-cheat-sheet/
+st.set_page_config(page_title="NBA Stats", page_icon=":basketball:")
+
 
 # displaying image function
 def img_to_bytes(img_path):
@@ -19,8 +22,7 @@ st.markdown(
     header_html, unsafe_allow_html=True,
 )
 
-# For more emojis code https://www.webfx.com/tools/emoji-cheat-sheet/
-st.set_page_config(page_title="NBA Stats", page_icon=":basketball:")
+
 
 
 st.title('NBA Player Stats Explorer')
