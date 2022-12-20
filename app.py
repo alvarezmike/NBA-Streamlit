@@ -1,32 +1,32 @@
 import requests
+from pathlib import Path
 import streamlit as st
 import pandas as pd
 import base64
-from streamlit_lottie import st_lottie
 
+
+# displaying image function
+def img_to_bytes(img_path):
+    img_bytes = Path(img_path).read_bytes()
+    encoded = base64.b64encode(img_bytes).decode()
+    return encoded
+
+
+header_html = "<img src='data:image/png;base64,{}' class='img-fluid'>".format(
+    img_to_bytes("NBA_header.png")
+)
+st.markdown(
+    header_html, unsafe_allow_html=True,
+)
 
 # For more emojis code https://www.webfx.com/tools/emoji-cheat-sheet/
 st.set_page_config(page_title="NBA Stats", page_icon=":basketball:")
 
-# retrieve lottie animation from the web
-
-def load_lottieur(url):
-    r = requests.get(url)
-    if r.status_code != 200:
-        return None
-    return r.json()
-
-# animation link from the LottieFiles web page
-lottie_coding = load_lottieur("https://assets10.lottiefiles.com/packages/lf20_urtuxtsf.json")
-
-# inserting lottie into web page
-st_lottie(lottie_coding, height=200, key="basketball animation")
 
 st.title('NBA Player Stats Explorer')
 
 st.markdown("""
-This app performs simple webscraping of NBA player stats data!
-* **Python libraries:** base64, pandas, streamlit, requests, st_lottie
+This app performs webscraping of NBA player stats data!
 * **Data source:** [Basketball-reference.com](https://www.basketball-reference.com/).
 """)
 
